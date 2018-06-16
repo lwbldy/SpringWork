@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello Thymeleaf!</title>
+</head>
+<body>
+
+    <a>任何人都可见</a><br>
+    <a shiro:hasPermission="hasRols" href="createUser.html">有权限的标签</a><br>
+    <a shiro:hasPermission="noRols" href="createUser.html">没有权限的标签</a><br>
+
+    <span shiro:authenticated="true" >
+      <span>欢迎您：<span th:text="哈哈哈"></span></span>
+    </span><br>
+
+    <span shiro:user="admin">
+        admin
+    </span><br>
+
+
+</body>
+</html>

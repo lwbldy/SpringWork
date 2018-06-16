@@ -6,7 +6,7 @@ server:
 logging:
   level:
     root: info
-    com.bootdo: debug
+    com.lwb: info
 
 spring:
   # 配置模板

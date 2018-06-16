@@ -1,25 +1,30 @@
-package com.lwb.blog.dao;
+package com.lwb.common.dao;
 
-import com.lwb.blog.domain.ContentDO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ContentDaoTest {
+public class CodeGenratorMapperTest {
 
     @Autowired
-    ContentDao contentDao;
+    CodeGenratorMapper codeGenratorMapper;
+
 
     @Test
-    public void get() throws Exception {
-        ContentDO contentDO = contentDao.get(75l);
-        System.out.println(contentDO);
+    public void listColumns() throws Exception {
+
+        List<Map<String, String>> codeColl = codeGenratorMapper.listColumns("blog_content");
+        System.out.println(codeColl.size());
+
     }
 
 }
