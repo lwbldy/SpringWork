@@ -20,8 +20,9 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         Long userId = ShiroUtils.getUserId();
 
+
         /**
-         * 没加缓存，每次访问权限，都会输出，如果加了缓存，就不会每次都查询
+         * 没加缓存，每次访问权限，都会输出，如果加了缓存，就不会每次都查询,同一个用户，只查询一次
          */
         System.out.println("------||------->>"+userId);
 
