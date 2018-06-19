@@ -8,6 +8,8 @@ logging:
     root: info
     com.lwb: info
 
+
+
 spring:
   # 配置模板
   thymeleaf:
@@ -43,14 +45,13 @@ spring:
     filters: stat,wall,slf4j
     # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
+    cache:
+      ehcache:
+        config: ehcache.xml
 
-
-  #配置缓存
-  cache:
-    ehcache:
-      config: ehcache.xml
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

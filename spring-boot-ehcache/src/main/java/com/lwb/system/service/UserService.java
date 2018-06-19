@@ -45,4 +45,10 @@ public interface UserService {
      * @throws Exception
      */
     Map<String, Object> updatePersonalImg(MultipartFile file, String avatar_data, Long userId) throws Exception;
+
+    /**
+     * 删除缓存
+     * @param id
+     */
+    void modifyUser(Long id);
 }

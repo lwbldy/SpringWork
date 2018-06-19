@@ -84,9 +84,11 @@
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 
+		<!-- 莫名其妙，换成低版本的就没有问题，换成高版本的就有问题 -->
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
+			<version>2.4.8</version>
 		</dependency>
 
 

@@ -4,6 +4,7 @@ import com.lwb.system.dao.UserDao;
 import com.lwb.system.domain.UserDO;
 import com.lwb.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,16 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    @Cacheable(value = "myCache", key = "#id")
+    @Cacheable(value = "myCache", key = "'user_'+#id")
     public UserDO get(Long id) {
         System.out.println("--------------->>id-->"+id);
         UserDO userDO = userMapper.get(id);
         return userDO;
+    }
+
+    @CacheEvict(value = "myCache", key = "'user_'+#id")
+    public void modifyUser(Long id) {
+        System.out.println("删除id为-->"+id+"的缓存");
     }
 
     @Override
