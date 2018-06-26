@@ -32,6 +32,11 @@ public class HelloController {
     }
 
 
+    /**
+     * 测试 共享session
+     * @param session
+     * @return
+     */
     @RequestMapping("/uid")
     @ResponseBody
     String uid(HttpSession session) {

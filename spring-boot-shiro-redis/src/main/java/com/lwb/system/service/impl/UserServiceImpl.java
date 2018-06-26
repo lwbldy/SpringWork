@@ -5,7 +5,6 @@ import com.lwb.system.domain.UserDO;
 import com.lwb.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    @Cacheable(value = "myCache", key = "#id")
+    @Cacheable(value = "myCache", key = "'user_'+#id")
     public UserDO get(Long id) {
         System.out.println("--------------->>id-->"+id);
         UserDO userDO = userMapper.get(id);

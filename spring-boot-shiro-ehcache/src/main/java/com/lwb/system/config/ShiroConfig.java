@@ -7,6 +7,7 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,6 +46,7 @@ public class ShiroConfig {
         securityManager.setCacheManager(getEhCacheManager());
         //设置realm.
         securityManager.setRealm(realm);
+        securityManager.setSessionManager(sessionManagerBean());
         return securityManager;
     }
     @Bean(name = "shiroFilter")
@@ -67,9 +69,19 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/**", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-
-
         return shiroFilterFactoryBean;
+    }
+
+    /**
+     * shiro session 配置
+     * @return
+     */
+    @Bean
+    public DefaultWebSessionManager sessionManagerBean(){
+        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+        //设置session过期时间（单位毫秒）
+        sessionManager.setGlobalSessionTimeout(60000);
+        return sessionManager;
     }
 
 

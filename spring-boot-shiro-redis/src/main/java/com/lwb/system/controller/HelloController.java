@@ -23,6 +23,7 @@ public class HelloController {
         return userService.get(id);
     }
 
+
     @ResponseBody
     @RequestMapping("/delEhcache")
     R delEhcache(long id){
@@ -46,4 +47,5 @@ public class HelloController {
         session.setAttribute("uid", uid);
         return session.getId();
     }
+
 }
